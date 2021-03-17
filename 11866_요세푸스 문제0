@@ -1,0 +1,27 @@
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main()
+{
+	int n, k;
+	cin >> n >> k;
+	queue<int> yo;
+	for (int i = 0; i < n; i++)
+		yo.push(i + 1);
+
+	cout << "<";
+	while (!yo.empty())		// 큐가 비어있지 않을때까지
+	{
+		for (int i = 0; i < k - 1; i++)
+		{
+			yo.push(yo.front());	// k번째 앞의 값을 뒤로 넣어주고
+			yo.pop();				// 앞의 값을 k-1만큼 빼준다.
+		}
+		if (yo.size() != 1)
+			cout << yo.front() << ", ";	// k번째 출력
+		else	// 마지막 남은 숫자 출력
+			cout << yo.front() << ">" << endl;
+		yo.pop();					// 출력한 k번째는 pop해준다.
+	}
+}

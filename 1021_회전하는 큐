@@ -1,0 +1,65 @@
+// 1021_회전하는큐.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
+//
+
+#include <iostream>
+#include <deque>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    int n, m;
+    cin >> n >> m;
+
+    deque<int> dq;
+    int loc[51];
+    for (int i = 0; i < n; i++)
+        dq.push_back(i + 1);    // 값 넣어주기
+
+    int pos = 0;
+    int count = 0;
+    for (int i = 0; i < m; i++)
+    {
+        cin >> loc[i];      // 위치 정하기
+        for (int j = 0; j < dq.size(); ++j)    
+        {                   // 찾으려고하는게 어디에 위치하는지
+            if (dq[j]==loc[i])
+            {
+                pos = j;
+                break;
+            }
+        }
+        if (pos < dq.size()-pos)    // 2번
+        {
+            while (1)
+            {
+                if (dq.front() == loc[i])
+                {
+                    dq.pop_front();
+                    break;
+                }
+                int left = dq.front();
+                dq.pop_front();
+                dq.push_back(left);
+                count++;
+            }
+        }
+        else                        // 3번
+        {
+            while (1)
+            {
+                if (dq.front() == loc[i])
+                {
+                    dq.pop_front();
+                    break;
+                }
+                int right = dq.back();
+                dq.pop_back();
+                dq.push_front(right);
+                count++;
+            }
+        }
+    }
+    
+    cout << count << endl;
+}

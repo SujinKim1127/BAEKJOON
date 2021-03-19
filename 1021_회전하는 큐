@@ -21,7 +21,7 @@ int main()
     for (int i = 0; i < m; i++)
     {
         cin >> loc[i];      // 위치 정하기
-        for (int j = 0; j < dq.size(); ++j)    
+        for (int j = 0; j < dq.size(); j++)    
         {                   // 찾으려고하는게 어디에 위치하는지
             if (dq[j]==loc[i])
             {

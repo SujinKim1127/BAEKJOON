@@ -15,17 +15,19 @@ int main()
     {
         scanf("%d", &a);
 
-        if (a == 0 && x.empty()==1)
+        if (a == 0)
         {
-            printf("%d\n", 0);
-        }
-        else if (a==0)
-        {
-            printf("%d\n", x.top());
-            x.pop();
+            if (x.empty() == 1)
+                printf("%d\n", 0);
+            else
+            {
+                printf("%d\n", x.top());
+                x.pop();
+            }
         }
         else
             x.push(a);
     }
     return 0;
 }
+

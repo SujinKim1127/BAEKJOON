@@ -5,29 +5,30 @@
 #include <vector>
 #include <algorithm>
 #include <string>
-
+#include <stdio.h>
 using namespace std;
 
 
 int main()
 {
 	int n, m;
-	cin >> n;
+	scanf("%d", &n);
 	vector<int> c(n);
 
 	for (int i = 0; i < n; i++)
-		cin >> c[i];
+		scanf("%d", &c[i]);
 	sort(c.begin(), c.end());
 
-	cin >> m;
+	scanf("%d", &m);
 	int a = 0;
 	for (int i = 0; i < m; i++)
 	{
-		cin >> a;
-		cout << upper_bound(c.begin(), c.end(), a) - lower_bound(c.begin(), c.end(), a) << " ";
+		scanf("%d", &a);
+		printf("%d ", upper_bound(c.begin(), c.end(), a) - lower_bound(c.begin(), c.end(), a));
 	}
 
 	cout << endl;
 	return 0;
 }
+
 

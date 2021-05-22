@@ -1,11 +1,7 @@
 #include <iostream>
-#include <list>
-
 #include <algorithm>
 using namespace std;
-
-list <int> lst;
-
+bool arr[1000];
 
 int main()
 {
@@ -13,29 +9,24 @@ int main()
     int cnt=0;
     scanf("%d %d", &n, &k);
 
-
-    list <int> ::iterator iter;
     for (int i = 2; i <= n; i++)
     {
-        lst.push_back(i);
+        arr[i] = true;
     }
     for (int j = 2; j <= n && cnt <= k; j++) // P
     {   
-        if(j=*lst.begin())
+        for(int i = j; i <= n; i += j)
         {
-            for(int i = j; i <= n; i+=j)
+            if(arr[i])
             {
-                iter = ::find(lst.begin(),lst.end(), i);
-                if(iter != lst.end())
+                arr[i] = false;
+                cnt++;
+                if(cnt==k)
                 {
-                    lst.remove(i);  cnt++;
-                    if(cnt==k)
-                        printf("%d", i);
+                    printf("%d", i);
+                    return 0;
                 }
-            
             }
         }
     }
-        
-
 }

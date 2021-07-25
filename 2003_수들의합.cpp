@@ -9,4 +9,5 @@ unsigned long long M;
 
 int main(){
     cin>>N>>M;
+    int low = 0, high = 0;
 }

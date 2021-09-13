@@ -1,32 +1,44 @@
 #include <iostream>
 #include <algorithm>
-#include <list>
 using namespace std;
 
-long n;
-unsigned long long one[500000];
-list<unsigned long long> p;
+int n;
+int one[500000];
 
-long m;
-unsigned long long two[500000];
-list<unsigned long long> q;
+int m;
+int two[500000];
 
 int main()
 {
-    cin >> n;
+    scanf("%d", &n);
     for(int i = 0; i < n; i++)
-    {
-        cin >> one[i];
-        p.push_back(one[i]);
-    }
+        scanf("%d", &one[i]);
 
-    cin >> m;
+    sort(one, one + n);
+
+    scanf("%d", &m);
+    for(int i = 0; i < m; i++)
+        scanf("%d", &one[i]);
+
     for(int i = 0; i < m; i++)
     {
-        cin >> two[i];
-        q.push_back(two[i]);
-    }
+        int num = 0;
+        int low = 0;
+        int high = n - 1;
 
-    
-    auto it = find(two[0], two[499999], one[i]);
+        while(low <= high)
+        {
+            int mid = (low + high) / 2;
+            if(one[mid] == two[i])
+            {
+                num = 1;
+                break;
+            }
+            if(one[mid] < two[i])
+                low = mid + 1;
+            if(one[mid] > two[i])
+                high = mid - 1;
+        }
+        printf("%d ", num);
+    }
 }

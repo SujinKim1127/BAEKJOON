@@ -2,6 +2,8 @@
 #include <algorithm>
 using namespace std;
 
+/* 이분탐색 */
+
 int n;
 int one[500000];
 

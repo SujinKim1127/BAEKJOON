@@ -6,16 +6,17 @@ using namespace std;
 int main()
 {
     int n;
-    int x[10000000];
-    int copy[10000000];
+
+    vector<int> x(n);
 
     scanf("%d", &n);
     for(int i = 0; i < n; i++)
     {
         scanf("%d", &x[i]); 
-        copy[i] = x[i];
     }
-    
-    sort(copy, copy + n);
+    vector<int> copy(x);
+    sort(copy.begin(), copy.end());     // 정렬
+
+    copy.erase(unique(copy.begin(), copy.end(), copy.end()));
     
 }
